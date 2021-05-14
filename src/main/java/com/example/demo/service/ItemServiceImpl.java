@@ -54,23 +54,23 @@ public class ItemServiceImpl implements ItemService {
         itemrepo.save(newitem);
     }
 
-//    //method to update an item
-//    @Override
-//    public Item updateItem(Item newItem, Long id) {
-////        return itemrepo.findById(id)
-////                .map(item -> {
-////                    item.setName(newItem.getName());
-////                    item.setType(newItem.getType());
-////                    item.setDescription(newItem.getDescription());
-////                    item.setImg(newItem.getImg());
-////                    item.setPrice(newItem.getPrice());
-////                    return itemrepo.save(item);
-////                })
-////                .orElseGet(() -> {
-////                    newItem.setId(id);
-////                    return itemrepo.save(newItem);
-////                });
-//    }
+    //method to update an item
+    @Override
+    public void updateItem(Item newItem, Long id) {
+        itemrepo.findById(id)
+                .map(item -> {
+                    item.setName(newItem.getName());
+                    item.setType(newItem.getType());
+                    item.setDescription(newItem.getDescription());
+                    item.setImg(newItem.getImg());
+                    item.setPrice(newItem.getPrice());
+                    return itemrepo.save(item);
+                })
+                .orElseGet(() -> {
+                    newItem.setId(id);
+                    return itemrepo.save(newItem);
+                });
+    }
 
     //method to save an item
     @Override

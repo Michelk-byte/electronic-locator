@@ -16,6 +16,6 @@ public interface ItemService {
 
     Optional<Item> findId(Long id) ;
     void addItem(Item item);
-//    Item updateItem(Item item, Long id);
+    void updateItem(Item item, Long id);
     void deleteItem(Long id);
 }

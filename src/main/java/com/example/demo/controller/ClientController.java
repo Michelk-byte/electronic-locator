@@ -26,12 +26,14 @@ public class ClientController {
 
         return ResponseEntity.ok().body(Collections.singletonMap("response", "Item added!"));
     }
-//
-//    @PutMapping("/update/{id}")
-//    Item replaceEmployee(@RequestBody Item newItem, @PathVariable Long id) {
-//        return itemService.updateItem(newItem, id);
-//    }
-//
+
+    @PutMapping("/update/{id}")
+    ResponseEntity<Map<String, String>> replaceEmployee(@RequestBody Item newItem, @PathVariable Long id) {
+        itemService.updateItem(newItem, id);
+
+        return ResponseEntity.ok().body(Collections.singletonMap("response", "Item updated!"));
+    }
+
     @DeleteMapping("/delete/{id}")
     ResponseEntity<Map<String, String>> deleteEmployee(@PathVariable Long id) {
         itemService.deleteItem(id);
