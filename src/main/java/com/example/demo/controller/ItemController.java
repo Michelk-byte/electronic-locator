@@ -17,45 +17,44 @@ import java.util.Optional;
 @RequestMapping("/items")
 public class ItemController {
 
-   final
-   ItemService electronic_Service;
+    final
+    ItemService electronic_Service;
 
     public ItemController(ItemService electronic_Service) {
         this.electronic_Service = electronic_Service;
     }
 
-   @GetMapping
-   public ResponseEntity<Page<Item>> findRestos(Pageable pageable){
-       return findAllRestaurants("All",pageable);
-   }
+    @GetMapping
+    public ResponseEntity<Page<Item>> findRestos(Pageable pageable) {
+        return findAllRestaurants("All", pageable);
+    }
 
 
     @GetMapping("/{type}")
-    public ResponseEntity<Page<Item>> findAllRestaurants(@PathVariable("type") String type, Pageable pageable){
-        try{
-            if(type.contentEquals("All") ){
-                return new ResponseEntity<>(electronic_Service.findAll(pageable),HttpStatus.OK);
+    public ResponseEntity<Page<Item>> findAllRestaurants(@PathVariable("type") String type, Pageable pageable) {
+        try {
+            if (type.contentEquals("All")) {
+                return new ResponseEntity<>(electronic_Service.findAll(pageable), HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(electronic_Service.findType(type, pageable), HttpStatus.OK);
             }
-            else{
-               return new ResponseEntity<>(electronic_Service.findType(type,pageable),HttpStatus.OK);
-            }
-        }catch (Exception e) {
+        } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/name/{name}")
-    public ResponseEntity<Page<Item>> findNameRestaurants(@PathVariable("name") String name, Pageable pageable){
-        try{
-                return new ResponseEntity<>(electronic_Service.findName(name,pageable),HttpStatus.OK);
-        }catch (Exception e) {
+    public ResponseEntity<Page<Item>> findNameRestaurants(@PathVariable("name") String name, Pageable pageable) {
+        try {
+            return new ResponseEntity<>(electronic_Service.findName(name, pageable), HttpStatus.OK);
+        } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Optional<Item>> findId(@PathVariable Long id){
-        return new ResponseEntity<>(electronic_Service.findId(id),HttpStatus.OK);
+    public ResponseEntity<Optional<Item>> findId(@PathVariable Long id) {
+        return new ResponseEntity<>(electronic_Service.findId(id), HttpStatus.OK);
     }
 
 }
