@@ -17,10 +17,9 @@ public interface ItemRepository extends PagingAndSortingRepository<Item,Long> {
     Page<Item> findBytypeContaining(String type, Pageable pageable);
     Page<Item> findByNameStartingWithIgnoreCase(String name, Pageable pageable);
 
-    // methods to filter the items by types it will help us select the visited restaurants by type
+    // methods to filter the items by types it will help us select the selected electronics by type
     List<Item> findByType(String Type);
 
-    //methods to get the restaurant by id
+    //methods to get the electronic device by id
     Optional<Item> findById(Long id);
-
 }

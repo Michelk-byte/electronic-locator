@@ -41,7 +41,7 @@ public class ItemServiceImpl implements ItemService {
         return repository.findByNameStartingWithIgnoreCase(name, pageable);
     }
 
-    //method to return the restaurant by its id
+    //method to return the device by its id
     @Override
     public Optional<Item> findId(Long id) {
         return repository.findById(id);
