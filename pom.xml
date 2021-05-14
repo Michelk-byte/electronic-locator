@@ -11,8 +11,8 @@
     <groupId>com.example</groupId>
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>restaurant-locator</name>
-    <description>Platform that will aid you into finding your favorite restaurant</description>
+    <name>electronic-locator</name>
+    <description>Platform that will aid you into finding their favorite electronic devices</description>
     <properties>
         <java.version>11</java.version>
     </properties>
