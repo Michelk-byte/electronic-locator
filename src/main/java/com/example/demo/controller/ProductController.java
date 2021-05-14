@@ -29,14 +29,14 @@ public class ProductController {
     }
 
     @PutMapping("/update/{id}")
-    ResponseEntity<Map<String, String>> replaceEmployee(@RequestBody Item newItem, @PathVariable Long id) {
+    ResponseEntity<Map<String, String>> replaceItem(@RequestBody Item newItem, @PathVariable Long id) {
         itemService.updateItem(newItem, id);
 
         return ResponseEntity.ok().body(Collections.singletonMap("response", "Item updated!"));
     }
 
     @DeleteMapping("/delete/{id}")
-    ResponseEntity<Map<String, String>> deleteEmployee(@PathVariable Long id) {
+    ResponseEntity<Map<String, String>> deleteItem(@PathVariable Long id) {
         try {
             itemService.deleteItem(id);
 
