@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.transaction.Transactional;
 import java.util.*;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(value = "/product", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProductController {
@@ -36,8 +37,12 @@ public class ProductController {
 
     @DeleteMapping("/delete/{id}")
     ResponseEntity<Map<String, String>> deleteEmployee(@PathVariable Long id) {
-        itemService.deleteItem(id);
+        try {
+            itemService.deleteItem(id);
 
-        return ResponseEntity.ok().body(Collections.singletonMap("response", "Item deleted!"));
+            return ResponseEntity.ok().body(Collections.singletonMap("response", "Item deleted!"));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Collections.singletonMap("response", "Item already deleted!"));
+        }
     }
 }
