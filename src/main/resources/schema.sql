@@ -6,7 +6,7 @@ Create Table items(
     type Varchar(50),
     price varchar(70),
     description varchar (1000),
-    img varchar(200), PRIMARY KEY (id)
+    img varchar(1000), PRIMARY KEY (id)
 );
 
 
