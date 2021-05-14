@@ -15,4 +15,7 @@ public interface ItemService {
     Page<Item> findName(String name, Pageable pageable);
 
     Optional<Item> findId(Long id) ;
+    void addItem(Item item);
+//    Item updateItem(Item item, Long id);
+    void deleteItem(Long id);
 }

@@ -8,7 +8,7 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 
 @Entity
-@Table(name="items")
+@Table(name = "items")
 public class Item {
 
     @Id
@@ -22,7 +22,7 @@ public class Item {
     private String description;
     private String img;
 
-    public Item(Long id, String name, String type, String price, String description,String img) {
+    public Item(Long id, String name, String type, String price, String description, String img) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -72,12 +72,21 @@ public class Item {
         this.type = type;
     }
 
-    public void setPrice(String price){this.price=price;}
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
-    public String getPrice(){return this.price;}
+    public String getPrice() {
+        return this.price;
+    }
 
-    public void setDescription(String description){this.description=description;}
-    public String getDescription(){return this.description;}
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
 
     public String getImg() {
         return img;

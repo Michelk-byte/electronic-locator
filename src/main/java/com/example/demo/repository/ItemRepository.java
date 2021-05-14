@@ -4,6 +4,7 @@ import com.example.demo.model.Item;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.lang.NonNullApi;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,4 +22,5 @@ public interface ItemRepository extends PagingAndSortingRepository<Item,Long> {
 
     //methods to get the restaurant by id
     Optional<Item> findById(Long id);
+
 }

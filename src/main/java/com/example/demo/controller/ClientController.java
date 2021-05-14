@@ -6,33 +6,36 @@ import com.example.demo.service.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
-@RequestMapping("/client")
+@RequestMapping(value = "/product", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ClientController {
 
+    @Autowired
+    ItemService itemService;
 
+    @PostMapping("/insert")
+    ResponseEntity<Map<String, String>> insertItem(@RequestBody Item newItem) {
+        itemService.addItem(newItem);
 
-
-//    @Transactional
-//    @DeleteMapping("/delete/item")
-//    public ResponseEntity<List<Cart>> deletItem(@RequestParam("id")Long id){
-//        cartServ.deleteItem(id);
-//        return new ResponseEntity<>(cartServ.findAll(),HttpStatus.OK);
+        return ResponseEntity.ok().body(Collections.singletonMap("response", "Item added!"));
+    }
+//
+//    @PutMapping("/update/{id}")
+//    Item replaceEmployee(@RequestBody Item newItem, @PathVariable Long id) {
+//        return itemService.updateItem(newItem, id);
 //    }
+//
+    @DeleteMapping("/delete/{id}")
+    ResponseEntity<Map<String, String>> deleteEmployee(@PathVariable Long id) {
+        itemService.deleteItem(id);
 
-
-
-
-
-
-
-
-
+        return ResponseEntity.ok().body(Collections.singletonMap("response", "Item deleted!"));
+    }
 }

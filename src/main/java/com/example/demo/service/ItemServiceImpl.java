@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.Item;
 import com.example.demo.repository.ItemRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,9 @@ import java.util.Optional;
 
 @Service
 public class ItemServiceImpl implements ItemService {
+
+    @Autowired
+    ItemRepository itemrepo;
 
     //autowiring the Items Repository
     private final ItemRepository repository;
@@ -41,6 +45,37 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public Optional<Item> findId(Long id) {
         return repository.findById(id);
+    }
+
+
+    //method to save an item
+    @Override
+    public void addItem(Item newitem) {
+        itemrepo.save(newitem);
+    }
+
+//    //method to update an item
+//    @Override
+//    public Item updateItem(Item newItem, Long id) {
+////        return itemrepo.findById(id)
+////                .map(item -> {
+////                    item.setName(newItem.getName());
+////                    item.setType(newItem.getType());
+////                    item.setDescription(newItem.getDescription());
+////                    item.setImg(newItem.getImg());
+////                    item.setPrice(newItem.getPrice());
+////                    return itemrepo.save(item);
+////                })
+////                .orElseGet(() -> {
+////                    newItem.setId(id);
+////                    return itemrepo.save(newItem);
+////                });
+//    }
+
+    //method to save an item
+    @Override
+    public void deleteItem(Long id) {
+        itemrepo.deleteById(id);
     }
 
 }

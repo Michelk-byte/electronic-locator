@@ -18,10 +18,10 @@ import java.util.Optional;
 public class ItemController {
 
    final
-   ItemService restauService;
+   ItemService electronic_Service;
 
-    public ItemController(ItemService restauService) {
-        this.restauService = restauService;
+    public ItemController(ItemService electronic_Service) {
+        this.electronic_Service = electronic_Service;
     }
 
    @GetMapping
@@ -34,10 +34,10 @@ public class ItemController {
     public ResponseEntity<Page<Item>> findAllRestaurants(@PathVariable("type") String type, Pageable pageable){
         try{
             if(type.contentEquals("All") ){
-                return new ResponseEntity<>(restauService.findAll(pageable),HttpStatus.OK);
+                return new ResponseEntity<>(electronic_Service.findAll(pageable),HttpStatus.OK);
             }
             else{
-               return new ResponseEntity<>(restauService.findType(type,pageable),HttpStatus.OK);
+               return new ResponseEntity<>(electronic_Service.findType(type,pageable),HttpStatus.OK);
             }
         }catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -47,7 +47,7 @@ public class ItemController {
     @GetMapping("/name/{name}")
     public ResponseEntity<Page<Item>> findNameRestaurants(@PathVariable("name") String name, Pageable pageable){
         try{
-                return new ResponseEntity<>(restauService.findName(name,pageable),HttpStatus.OK);
+                return new ResponseEntity<>(electronic_Service.findName(name,pageable),HttpStatus.OK);
         }catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -55,7 +55,7 @@ public class ItemController {
 
     @GetMapping("/id/{id}")
     public ResponseEntity<Optional<Item>> findId(@PathVariable Long id){
-        return new ResponseEntity<>(restauService.findId(id),HttpStatus.OK);
+        return new ResponseEntity<>(electronic_Service.findId(id),HttpStatus.OK);
     }
 
 }
