@@ -25,26 +25,23 @@ public class ItemController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<Item>> findRestos(Pageable pageable) {
-        return findAllRestaurants("All", pageable);
+    public ResponseEntity<Page<Item>> findDevices(Pageable pageable) {
+        return new ResponseEntity<>(electronic_Service.findAll(pageable), HttpStatus.OK);
     }
 
 
     @GetMapping("/{type}")
-    public ResponseEntity<Page<Item>> findAllRestaurants(@PathVariable("type") String type, Pageable pageable) {
+    public ResponseEntity<Page<Item>> findAllDevices(@PathVariable("type") String type, Pageable pageable) {
         try {
-            if (type.contentEquals("All")) {
-                return new ResponseEntity<>(electronic_Service.findAll(pageable), HttpStatus.OK);
-            } else {
-                return new ResponseEntity<>(electronic_Service.findType(type, pageable), HttpStatus.OK);
-            }
+            return new ResponseEntity<>(electronic_Service.findType(type, pageable), HttpStatus.OK);
+
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/name/{name}")
-    public ResponseEntity<Page<Item>> findNameRestaurants(@PathVariable("name") String name, Pageable pageable) {
+    public ResponseEntity<Page<Item>> findNameDevices(@PathVariable("name") String name, Pageable pageable) {
         try {
             return new ResponseEntity<>(electronic_Service.findName(name, pageable), HttpStatus.OK);
         } catch (Exception e) {

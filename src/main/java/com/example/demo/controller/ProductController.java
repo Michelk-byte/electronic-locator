@@ -15,7 +15,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping(value = "/product", produces = MediaType.APPLICATION_JSON_VALUE)
-public class ClientController {
+public class ProductController {
 
     @Autowired
     ItemService itemService;
