@@ -2,7 +2,7 @@
 
 Proof of concept Rest-API implemented with Java Spring Boot using HTTP methods GET-POST-PUT-DELETE.
 
-Prerequisites:
+Requirements:
 * Java 11
 * Postgresql any version
 * Intellij Idea Ultimate
