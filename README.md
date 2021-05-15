@@ -8,4 +8,5 @@ Requirements:
 * Intellij Idea Ultimate
 
 Frontend Repo (React Framework): https://github.com/Amd2D/EL-Front-End
+<br />
 Frontend URL: https://electronic-locator.web.app/
